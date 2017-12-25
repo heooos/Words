@@ -4,7 +4,6 @@
 import requests as req
 from bs4 import BeautifulSoup
 from collections import Counter
-import json
 import re
 import words.MyLogger as log
 import words.DBOperation as dbm
@@ -56,18 +55,10 @@ def download(m_data):
         sql = us.get_i_sql(DATABASE_LIST_WORDS, {'WORD': str.lower(word.encode('utf-8'))})
         dbm.insert_data(sql)
     return words
-    # all_words.extend(words)
-    # return words
-    # stat_freq(words)
-    # 去除列表中的重复项，并排序
-    # l = sorted(list(set(words)))
-
-    #遍历/转化为小写
-    # for word in words:
-    #     print str.lower(word.encode('utf-8'))
 
 
 # 统计词频方法 传入带有重复单词的列表
+# 未使用
 def stat_freq(words):
     cnt = Counter()
     for word in words:

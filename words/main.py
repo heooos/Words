@@ -36,40 +36,40 @@ logging.debug("DataBase(TestOP) is Created!")
 #
 pool = Threadpool(100)
 #
-# start_time = time.time()
-# # 访问列表获取
-# m_dict = getl.get_main_html('https://developer.android.com/index.html')
-# end_time = time.time()
-#
-# print u"获取列表使用时间为{}秒".format(end_time - start_time)
-#
-# logging.debug("----------------列表获取完毕,开始数据库插入----------------------")
-#
-#
-# if m_dict[0]:
-#     for item in m_dict[0]:
-#         o = item.split('*')
-#         sql = us.get_i_sql(DATABASE_NAME_LIST, {'NAME': o[0], 'URL': o[1]})
-#         dbm.insert_data(sql)
-#     if m_dict[1]:
-#         for item in m_dict[1]:
-#             o = item.split('*')
-#             sql = us.get_i_sql(DATABASE_NAME_REF, {'NAME': o[0], 'URL': o[1]})
-#             dbm.insert_data(sql)
-#             # dbm.insert_data(DATABASE_NAME_REF, o[0], o[1])
-#     if m_dict[2]:
-#         for item in m_dict[2]:
-#             o = item.split('*')
-#             if o[0] == 'Get Started':
-#                 sql = us.get_i_sql(DATABASE_NAME_LIST, {'NAME': o[0], 'URL': 'https://developer.android.com/things/get-started/index.html'})
-#                 dbm.insert_data(sql)
-#                 break
-#             sql = us.get_i_sql(DATABASE_NAME_CHILD,
-#                                {'NAME': o[0], 'URL': o[1]})
-#             dbm.insert_data(sql)
-#
-# else:
-#     logging.error("Please check internet")
+start_time = time.time()
+# 访问列表获取
+m_dict = getl.get_main_html('https://developer.android.com/index.html')
+end_time = time.time()
+
+print u"获取列表使用时间为{}秒".format(end_time - start_time)
+
+logging.debug("----------------列表获取完毕,开始数据库插入----------------------")
+
+
+if m_dict[0]:
+    for item in m_dict[0]:
+        o = item.split('*')
+        sql = us.get_i_sql(DATABASE_NAME_LIST, {'NAME': o[0], 'URL': o[1]})
+        dbm.insert_data(sql)
+    if m_dict[1]:
+        for item in m_dict[1]:
+            o = item.split('*')
+            sql = us.get_i_sql(DATABASE_NAME_REF, {'NAME': o[0], 'URL': o[1]})
+            dbm.insert_data(sql)
+            # dbm.insert_data(DATABASE_NAME_REF, o[0], o[1])
+    if m_dict[2]:
+        for item in m_dict[2]:
+            o = item.split('*')
+            if o[0] == 'Get Started':
+                sql = us.get_i_sql(DATABASE_NAME_LIST, {'NAME': o[0], 'URL': 'https://developer.android.com/things/get-started/index.html'})
+                dbm.insert_data(sql)
+                break
+            sql = us.get_i_sql(DATABASE_NAME_CHILD,
+                               {'NAME': o[0], 'URL': o[1]})
+            dbm.insert_data(sql)
+
+else:
+    logging.error("Please check internet")
 
 logging.debug("----------------数据库插入完成,开始遍历页面,获取单词----------------------")
 

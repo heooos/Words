@@ -8,8 +8,8 @@ import words.MyLogger as log
 
 logging = log.get_logger('GetHtmlList')
 p = {
-        'http': 'socks5://test:12345678@67.205.155.10:1080',
-        'https': 'socks5://test:12345678@67.205.155.10:1080'
+        'http': 'socks5://test:12345678@67.205.***.**:1080',
+        'https': 'socks5://test:12345678@67.205.***.**:1080'
     }
 
 # 链接数统计

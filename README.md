@@ -4,11 +4,17 @@
 
 # 环境及lib介绍
 * Python2.7
-* ConfigParser
-* MySQLdb
-* BeautifulSoup
-* requests
-* Counter
+* MySQLdb5.7.20
+* ConfigParser    //配置文件
+* BeautifulSoup   //网页解析库
+* requests   //网络请求库
+* Counter   //
+* wordcloud  //绘制词云图
+* PIL  //图形相关
+* matplotlib.pyplot  //绘图库
+* multiprocessing.dummy   //python多线程
+* logging   //日志库
+* re   //正则表达式库
 
 #项目介绍
 ```

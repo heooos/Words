@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - py_tables@localhost" uuid="8655d12c-fa6a-4567-ab4f-0c8b8e7795bf">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <introspection-scope>py_tables:</introspection-scope>
+      <resolve-scope>py_tables:</resolve-scope>
+    </data-source>
+  </component>
+</project>
