@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# 一次访问所有的网页
+# 依次访问所有的网页
 
 import requests as req
 from bs4 import BeautifulSoup
