@@ -9,7 +9,7 @@ import numpy as np
 
 mlist = {}
 
-with open('./cont.txt', "r") as f:
+with open('./android.txt', "r") as f:
     '''
     读取单词文本 将文本读取为字典格式
     {}
@@ -19,18 +19,18 @@ with open('./cont.txt', "r") as f:
         mlist[m[0]] = int(m[1].strip('\n'))
 
 
-alice_coloring = np.array(Image.open('test.jpg'))
+alice_coloring = np.array(Image.open('../image/android_img.jpg'))
 
 wc1 = WordCloud(
     max_words=8000,
     mask=alice_coloring,
-    background_color="white",
+    background_color="black",
     scale=10)
 
 image_colors = gengerator(alice_coloring)
 
 wc2 = wc1.generate_from_frequencies(mlist)
-wc2.to_file("alice.png")
+wc2.to_file("../image/android_img_com.png")
 
 # plt.imshow(wc2.recolor(color_func=image_colors), interpolation="bilinear")
 plt.imshow(wc2)

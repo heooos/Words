@@ -1,14 +1,18 @@
 # -*- coding: UTF-8 -*-
 
-import words.DBOperation as dbm
-import enchant
-from multiprocessing.dummy import Pool as Threadpool
 import time
+from multiprocessing.dummy import Pool as Threadpool
+import components.SQLTools as us
 
-GET_UNIQUE = "SELECT DISTINCT " + "WORD" + " FROM " + "TEST_WORDS"
+import enchant
+
+import components.DBOperation as dbm
+
+GET_UNIQUE = "SELECT DISTINCT " + "WORD" + " FROM " + "ALL_WORDS"
 d = enchant.Dict("en_US")
 
 
+# 获取唯一的单词
 def get_words_from_db():
     m_db = dbm.get_db()
     cursor = m_db.cursor()
@@ -18,24 +22,28 @@ def get_words_from_db():
     return words
 
 
+# 根据单词查询出现的频率
 def query_words_count(w):
     m_db = dbm.get_db()
     cursor = m_db.cursor()
     wor = str(w)
-    sql = "SELECT COUNT(1) FROM TEST_WORDS WHERE WORD="+"\""+wor+"\""
+    sql = "SELECT COUNT(1) FROM ALL_WORDS WHERE WORD="+"\""+wor+"\""
 
     cursor.execute(sql)
     m = cursor.fetchall()
     return str(m[0][0])
 
 
+# 保存单词到数据库
 def save(word):
     str_word = word[0]
     if d.check(str_word):  # 通过PyEnchant库将无效单词剔除出去(简写 特有 库名等)
-        query_words_count(str_word)
+        fre = query_words_count(str_word)
+        sql = us.get_i_sql("UNIQUE_WORDS", {'WORD': str_word, 'FREQUENCY': fre})
+        dbm.insert_data(sql)
         print word[0]
-        with open('./cont1.txt', 'a') as ff:
-            ff.write(str_word + ":" + str(query_words_count(str_word)) + "\n")
+        # with open('./python.txt', 'a') as ff:
+        #     ff.write(str_word + ":" + str(query_words_count(str_word)) + "\n")
 
 unique_words = get_words_from_db()
 
