@@ -1,2 +1,6 @@
 #git ignore
 .idea
+./android_words/*.pyc
+./components/*.pyc
+./python_words/*.pyc
+./words_analysis/*.pyc
